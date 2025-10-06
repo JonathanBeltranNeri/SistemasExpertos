@@ -40,7 +40,7 @@ def chat():
             nueva_respuesta = input("Tú (respuesta para guardar): ")
             knowledge_base[user_input] = nueva_respuesta
             guardar_conocimiento()
-            print("Chat: Gracias, he aprendido algo nuevo 😊")
+            print("Chat: Gracias, he aprendido algo nuevo ")
 
 if __name__ == "__main__":
     chat()

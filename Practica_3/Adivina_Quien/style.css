@@ -1,0 +1,61 @@
+body {
+  font-family: Arial, sans-serif;
+  background: #000; /* fondo negro, ya animado por el canvas */
+  text-align: center;
+  padding: 40px;
+  color: white;
+}
+
+h1 {
+  color: white;
+}
+
+#game {
+  background: rgba(255, 255, 255, 0.1); /* blanco transparente */
+  padding: 20px;
+  border-radius: 10px;
+  display: inline-block;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+}
+
+button {
+  margin: 10px;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  color: white;
+  font-weight: bold;
+  backdrop-filter: blur(4px); /* efecto vidrio */
+}
+
+/* Botones con colores transparentes */
+#yesBtn {
+  background-color: rgba(76, 175, 80, 0.5); /* verde transparente */
+}
+
+#noBtn {
+  background-color: rgba(244, 67, 54, 0.5); /* rojo transparente */
+}
+
+#startBtn {
+  background-color: rgba(33, 150, 243, 0.5); /* azul transparente */
+}
+
+/* Resultados y preguntas */
+#question, #result {
+  background-color: rgba(255, 255, 255, 0.1); /* blanco transparente */
+  padding: 10px;
+  border-radius: 6px;
+  display: inline-block;
+  margin-top: 10px;
+}
+
+/* Canvas de fondo */
+#fondo {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: -1; /* detrás de todo */
+}

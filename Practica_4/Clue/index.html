@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UNSC: Caso Clasificado</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="game-container">
+
+        <header>
+            <h1>UNSC // Caso Clasificado: ALMIRANTE OSMAN</h1>
+            <p class="status-report">REPORTANDO: <span id="pi-count">10 Puntos de Investigación</span> restantes.</p>
+            <p id="game-message">MENSAJE: La nave está en cuarentena. Encuentre al culpable.</p>
+        </header>
+
+        <div class="content-wrapper">
+
+            <main class="main-content">
+                
+                <nav class="tab-nav">
+                    <button class="tab-link active" data-tab="locations">LOCACIONES</button>
+                    <button class="tab-link" data-tab="suspects">SOSPECHOSOS</button>
+                    <button class="tab-link" data-tab="weapons">ARMAS</button>
+                </nav>
+
+                <div class="tab-content">
+
+                    <div id="locations" class="tab-pane active">
+                        <h2>Seleccione una locación para investigar:</h2>
+                        <div id="locations-grid" class="card-grid">
+                            </div>
+                    </div>
+
+                    <div id="suspects" class="tab-pane">
+                        <h2>Seleccione un sospechoso para investigar:</h2>
+                        <div id="suspects-grid" class="card-grid">
+                            </div>
+                    </div>
+
+                    <div id="weapons" class="tab-pane">
+                        <h2>Seleccione un arma para investigar:</h2>
+                        <div id="weapons-grid" class="card-grid">
+                            </div>
+                    </div>
+                </div>
+
+                <div class="action-bar">
+                    <button id="final-accusation-btn" class="btn-final">HACER ACUSACIÓN FINAL</button>
+                </div>
+
+            </main>
+
+            <aside class="notebook">
+                <h2>CUADERNO DEL DETECTIVE</h2>
+                <p>Marque los items descartados.</p>
+
+                <div class="notebook-section">
+                    <h3>Sospechosos</h3>
+                    <ul id="notebook-suspects">
+                        </ul>
+                </div>
+
+                <div class="notebook-section">
+                    <h3>Armas</h3>
+                    <ul id="notebook-weapons">
+                        </ul>
+                </div>
+
+                <div class="notebook-section">
+                    <h3>Locaciones</h3>
+                    <ul id="notebook-locations">
+                        </ul>
+                </div>
+            </aside>
+
+        </div> </div> <div id="accusation-modal" class="modal-overlay">
+        <div class="modal-content">
+            <h2>Hacer Acusación Final</h2>
+            <p>Seleccione su solución. Esta acción es irreversible y terminará la partida.</p>
+            
+            <div class="modal-form">
+                <label for="suspect-select">Sospechoso:</label>
+                <select id="suspect-select">
+                    </select>
+
+                <label for="weapon-select">Arma:</label>
+                <select id="weapon-select">
+                    </select>
+
+                <label for="location-select">Locación:</label>
+                <select id="location-select">
+                    </select>
+            </div>
+            
+            <div class="modal-actions">
+                <button id="confirm-accusation-btn" class="btn-confirm">CONFIRMAR ACUSACIÓN</button>
+                <button id="cancel-accusation-btn" class="btn-cancel">CANCELAR</button>
+            </div>
+        </div>
+    </div>
+    <script src="data.js"></script>
+    <script src="game.js"></script>
+
+</body>
+</html>

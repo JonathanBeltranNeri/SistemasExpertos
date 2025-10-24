@@ -3,31 +3,38 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Adivina Quién - Versión Inteligente</title>
+  <title>Adivina Quién - Videojuegos</title>
   <link rel="stylesheet" href="style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+
 </head>
 <body>
-  <h1>Adivina Quién </h1>
-  <div id="game">
-    <<body>
-  <!-- Canvas de fondo -->
   <canvas id="fondo"></canvas>
 
-  <h1>Adivina Quién </h1>
   <div id="game">
-    <p id="question">Presiona "Empezar" para iniciar.</p>
+    <h1>Adivina Quién - Videojuegos</h1>
+    <div id="question">Presiona START para comenzar</div>
+    <button id="reset-storage-btn" class="util-btn">Restaurar Conocimiento</button>
 
-    <div class="buttons">
-      <button id="yesBtn">Sí</button>
-      <button id="noBtn">No</button>
-      <button id="startBtn">Empezar</button>
+    <!-- Botones del juego -->
+    <button id="startBtn">START</button>
+    <button id="yesBtn" style="display:none;">YES</button>
+    <button id="noBtn" style="display:none;">NO</button>
+    <button id="backBtn" style="display:none;">CORREGIR</button> 
+
+    <!-- Imagen del personaje -->
+    <img id="personajeImg" src="" alt="" style="display:none; width:200px; margin-top:20px; border-radius:10px;">
+    <div id="learning-container" style="display:none;">
+        <p>¡Me has vencido! Ayúdame a aprender.</p>
+        <input type="text" id="new-character" placeholder="¿Quién era tu personaje?">
+        <input type="text" id="new-question" placeholder="Escribe una pregunta para diferenciarlo">
+        <input type="text" id="new-image" placeholder="Pega la URL de una imagen (opcional)"> <p style="font-size: 0.7em;">(La respuesta debe ser SÍ para tu personaje)</p>
+        <button id="save-btn">Enseñar</button>
     </div>
-
-    <div id="result"></div>
   </div>
 
-  <script src="game.js"></script>
-  <script src="fondo.js"></script> <!-- script nuevo -->
+  <!-- Scripts -->
+  <script src="fondo.js"></script>
+  <script type="module" src="game.js"></script>
 </body>
-
 </html>

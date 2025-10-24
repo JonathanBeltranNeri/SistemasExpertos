@@ -1,61 +1,163 @@
+/* --- Fuentes de Google --- */
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+/* --- Variables de Color (Paleta Retro) --- */
+:root {
+    --bg-color: #1a1c2c;       /* Azul oscuro de fondo */
+    --ui-color: #2c3e50;       /* Color del panel del juego */
+    --text-color: #ecf0f1;     /* Blanco-grisáceo para texto */
+    --border-color: #ecf0f1;   /* Color del borde */
+    --yes-color: #27ae60;      /* Verde para "Sí" */
+    --no-color: #c0392b;       /* Rojo para "No" */
+    --action-color: #2980b9;   /* Azul para "Start" */
+    --back-color: #f1c40f;     /* Amarillo para "Corregir" */
+}
+
+/* --- Configuración General --- */
+/* --- Configuración General --- */
 body {
-  font-family: Arial, sans-serif;
-  background: #000; /* fondo negro, ya animado por el canvas */
-  text-align: center;
-  padding: 40px;
-  color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    /* --- FONDO RESTAURADO --- */
+    background-color: #0d0d1a;
+    background-image: radial-gradient(circle, #1f1f3d, #0d0d1a 80%);
+    /* --- FIN DEL FONDO --- */
+    color: var(--text-color);
+    font-family: 'Press Start 2P', cursive;
+    text-align: center;
 }
 
+/* --- Título Principal --- */
 h1 {
-  color: white;
+    font-size: 2.5em;
+    color: var(--text-color);
+    /* Sombra dura para efecto 2D */
+    text-shadow: 4px 4px 0px #000; 
+    margin: 0 0 40px 0;
 }
 
+/* --- Panel Principal del Juego --- */
 #game {
-  background: rgba(255, 255, 255, 0.1); /* blanco transparente */
-  padding: 20px;
-  border-radius: 10px;
-  display: inline-block;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    background-color: var(--ui-color);
+    padding: 30px;
+    border: 4px solid var(--border-color);
+    box-shadow: 8px 8px 0px rgba(0, 0, 0, 0.4); /* Sombra 2D */
+    width: 90%;
+    max-width: 600px;
 }
 
+/* --- Texto de la Pregunta --- */
+#question {
+    font-size: 1.2em;
+    min-height: 80px; /* Espacio para que el texto no mueva la UI */
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+/* --- Contenedor de Botones --- */
+#game div {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Para que los botones se ajusten en pantallas pequeñas */
+    gap: 15px;
+}
+
+/* --- Estilo General de Botones --- */
 button {
-  margin: 10px;
-  padding: 10px 20px;
-  font-size: 16px;
-  border-radius: 6px;
-  border: none;
-  cursor: pointer;
-  color: white;
-  font-weight: bold;
-  backdrop-filter: blur(4px); /* efecto vidrio */
+    font-family: 'Press Start 2P', cursive;
+    font-size: 1em;
+    padding: 15px 25px;
+    border: 3px solid var(--border-color);
+    background-color: transparent;
+    color: var(--text-color);
+    cursor: pointer;
+    box-shadow: 4px 4px 0px rgba(0, 0, 0, 0.3);
+    transition: transform 0.1s, box-shadow 0.1s;
 }
 
-/* Botones con colores transparentes */
+/* Efecto al presionar el botón */
+button:active {
+    transform: translate(4px, 4px);
+    box-shadow: none;
+}
+
+/* --- Colores Específicos de Botones --- */
+#startBtn, #restartBtn {
+    background-color: var(--action-color);
+}
+
 #yesBtn {
-  background-color: rgba(76, 175, 80, 0.5); /* verde transparente */
+    background-color: var(--yes-color);
 }
 
 #noBtn {
-  background-color: rgba(244, 67, 54, 0.5); /* rojo transparente */
+    background-color: var(--no-color);
 }
 
-#startBtn {
-  background-color: rgba(33, 150, 243, 0.5); /* azul transparente */
+#backBtn {
+    background-color: var(--back-color);
 }
 
-/* Resultados y preguntas */
-#question, #result {
-  background-color: rgba(255, 255, 255, 0.1); /* blanco transparente */
-  padding: 10px;
-  border-radius: 6px;
-  display: inline-block;
-  margin-top: 10px;
+/* --- Imagen del Personaje --- */
+#personajeImg {
+    margin: 25px auto;
+    display: block;
+    max-width: 256px; /* Tamaño ideal para sprites de 128x128 escalados */
+    width: 100%;
+    border: 4px solid var(--border-color);
+    background-color: #000; /* Fondo negro para la imagen */
+    /* Mantiene los píxeles nítidos, ¡esencial para pixel art! */
+    image-rendering: pixelated;
+    image-rendering: -moz-crisp-edges;
+    image-rendering: crisp-edges;
 }
 
-/* Canvas de fondo */
+/* --- Fondo (si se usa) --- */
 #fondo {
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: -1; /* detrás de todo */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+/* style.css */
+
+/* --- Estilos para el Contenedor de Aprendizaje --- */
+#learning-container {
+    margin-top: 20px;
+}
+
+#learning-container p {
+    margin-bottom: 10px;
+}
+
+/* Estilo para los campos de texto */
+input[type="text"] {
+    font-family: 'Press Start 2P', cursive;
+    background-color: #000;
+    color: var(--text-color);
+    border: 3px solid var(--border-color);
+    padding: 10px;
+    width: 80%;
+    margin-bottom: 15px;
+    font-size: 0.8em;
+}
+
+/* Botón de Enseñar */
+#save-btn {
+    background-color: var(--yes-color);
+}
+/* style.css */
+.util-btn {
+    background-color: #7f8c8d; /* Un color neutro */
+    font-size: 0.6em;
+    padding: 8px 10px;
+    border-width: 2px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
 }

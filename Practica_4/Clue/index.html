@@ -9,99 +9,113 @@
 </head>
 <body>
 
+    <div id="welcome-modal" class="modal-overlay active">
+        <div class="modal-content modal-welcome">
+            <h2 id="welcome-title">BRIEFING CLASIFICADO: CARGANDO...</h2>
+            <div id="welcome-story" class="welcome-story-box">
+                <p>Cargando informe de situación...</p>
+            </div>
+            <div class="rules-list">
+                <h3>Cómo se Juega (La Guía del Detective)</h3>
+                <ol>
+                    <li><strong>Tu Objetivo:</strong> Descubrir quién fue el culpable, con qué arma y en qué locación.</li>
+                    <li><strong>Tus Herramientas:</strong> Tienes 10 Puntos de Investigación (PI). Usa tu Cuaderno para marcar a los inocentes.</li>
+                    <li><strong>La Lógica Clave:</strong> Es de <strong>"eliminar lo inocente"</strong>.
+                        <ul>
+                            <li>Si una pista se pone <strong>GRIS (Descartada)</strong>: Es <strong>INOCENTE</strong>. Táchala.</li>
+                            <li>Si una pista se queda <strong>AZUL (Investigada)</strong>: Es <strong>SOSPECHOSA</strong>. No la taches.</li>
+                        </ul>
+                    </li>
+                    <li><strong>Cómo Ganar:</strong> Descarta 4 de 5 en cada categoría. Los 3 ítems en <strong>AZUL</strong> son tu solución.</li>
+                </ol>
+            </div>
+            <div class="modal-actions">
+                <button id="start-game-btn" class="btn-final">¡COMENZAR INVESTIGACIÓN!</button>
+            </div>
+        </div>
+    </div>
+
     <div class="game-container">
-
         <header>
-            <h1>UNSC // Caso Clasificado: ALMIRANTE OSMAN</h1>
-            <p class="status-report">REPORTANDO: <span id="pi-count">10 Puntos de Investigación</span> restantes.</p>
-            <p id="game-message">MENSAJE: La nave está en cuarentena. Encuentre al culpable.</p>
+            <h1 id="main-title">UNSC // Caso Clasificado: CARGANDO...</h1>
+            <p class="status-report">REPORTANDO: <span id="pi-count">10</span> Puntos de Investigación restantes.</p>
+            <p id="game-message">MENSAJE: Esperando inicio de la investigación...</p>
         </header>
-
         <div class="content-wrapper">
-
             <main class="main-content">
-                
                 <nav class="tab-nav">
                     <button class="tab-link active" data-tab="locations">LOCACIONES</button>
                     <button class="tab-link" data-tab="suspects">SOSPECHOSOS</button>
                     <button class="tab-link" data-tab="weapons">ARMAS</button>
                 </nav>
-
                 <div class="tab-content">
-
                     <div id="locations" class="tab-pane active">
                         <h2>Seleccione una locación para investigar:</h2>
-                        <div id="locations-grid" class="card-grid">
-                            </div>
+                        <div id="locations-grid" class="card-grid"></div>
                     </div>
-
                     <div id="suspects" class="tab-pane">
                         <h2>Seleccione un sospechoso para investigar:</h2>
-                        <div id="suspects-grid" class="card-grid">
-                            </div>
+                        <div id="suspects-grid" class="card-grid"></div>
                     </div>
-
                     <div id="weapons" class="tab-pane">
                         <h2>Seleccione un arma para investigar:</h2>
-                        <div id="weapons-grid" class="card-grid">
-                            </div>
+                        <div id="weapons-grid" class="card-grid"></div>
                     </div>
                 </div>
-
                 <div class="action-bar">
                     <button id="final-accusation-btn" class="btn-final">HACER ACUSACIÓN FINAL</button>
                 </div>
-
             </main>
-
             <aside class="notebook">
                 <h2>CUADERNO DEL DETECTIVE</h2>
                 <p>Marque los items descartados.</p>
-
                 <div class="notebook-section">
                     <h3>Sospechosos</h3>
-                    <ul id="notebook-suspects">
-                        </ul>
+                    <ul id="notebook-suspects"></ul>
                 </div>
-
                 <div class="notebook-section">
                     <h3>Armas</h3>
-                    <ul id="notebook-weapons">
-                        </ul>
+                    <ul id="notebook-weapons"></ul>
                 </div>
-
                 <div class="notebook-section">
                     <h3>Locaciones</h3>
-                    <ul id="notebook-locations">
-                        </ul>
+                    <ul id="notebook-locations"></ul>
                 </div>
             </aside>
-
         </div> </div> <div id="accusation-modal" class="modal-overlay">
         <div class="modal-content">
             <h2>Hacer Acusación Final</h2>
             <p>Seleccione su solución. Esta acción es irreversible y terminará la partida.</p>
-            
             <div class="modal-form">
                 <label for="suspect-select">Sospechoso:</label>
-                <select id="suspect-select">
-                    </select>
-
+                <select id="suspect-select"></select>
                 <label for="weapon-select">Arma:</label>
-                <select id="weapon-select">
-                    </select>
-
+                <select id="weapon-select"></select>
                 <label for="location-select">Locación:</label>
-                <select id="location-select">
-                    </select>
+                <select id="location-select"></select>
             </div>
-            
             <div class="modal-actions">
                 <button id="confirm-accusation-btn" class="btn-confirm">CONFIRMAR ACUSACIÓN</button>
                 <button id="cancel-accusation-btn" class="btn-cancel">CANCELAR</button>
             </div>
         </div>
     </div>
+
+    <div id="clue-modal" class="modal-overlay">
+        <div class="modal-content modal-clue">
+            <h2 id="clue-modal-title">Archivo de Pista</h2>
+            <div id="clue-modal-body"><p>Cargando archivo de pista...</p></div>
+            <div class="modal-actions">
+                <button id="clue-modal-close" class="btn-confirm">CERRAR ARCHIVO</button>
+            </div>
+        </div>
+    </div>
+
+    <audio id="audio-click" src="sounds/click.mp3" preload="auto"></audio>
+    <audio id="audio-discard" src="sounds/discard.mp3" preload="auto"></audio>
+    <audio id="audio-investigate" src="sounds/investigate.mp3" preload="auto"></audio>
+    <audio id="audio-background" src="sounds/halo_theme.mp3" preload="auto" loop></audio>
+
     <script src="data.js"></script>
     <script src="game.js"></script>
 

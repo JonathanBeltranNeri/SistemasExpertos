@@ -16,14 +16,27 @@
     padding: 0;
 }
 
+/* --- ESTILOS GLOBALES --- */
 body {
-    font-family: 'Share Tech Mono', monospace; /* Fuente de terminal */
-    background-color: var(--color-fondo);
-    background-image: radial-gradient(circle at 20% 20%, rgba(0, 170, 255, 0.05), var(--color-fondo) 40%);
+    font-family: 'Share Tech Mono', monospace;
     color: var(--color-texto-principal);
-    padding: 20px;
-}
+    background-color: var(--color-fondo-principal); /* Color de respaldo si la imagen no carga */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Asegura que ocupe al menos toda la altura de la ventana */
+    overflow: hidden; /* Evita barras de desplazamiento si la imagen es muy grande */
 
+    /* --- PROPIEDADES PARA LA IMAGEN DE FONDO --- */
+    background-image: url('images/fondo_nave.jpg'); /* ¡CAMBIA 'fondo_nave.jpg' por el nombre de tu archivo! */
+    background-size: cover; /* Cubre todo el área sin dejar espacios, recortando si es necesario */
+    background-position: center center; /* Centra la imagen */
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-attachment: fixed; /* Mantiene la imagen fija al hacer scroll (opcional, pero se ve bien) */
+    /* --- FIN PROPIEDADES IMAGEN DE FONDO --- */
+}
 /* --- CONTENEDOR PRINCIPAL --- */
 .game-container {
     max-width: 1400px;
@@ -370,4 +383,114 @@ header h1 {
     border: 0;
     border-top: 1px solid var(--color-borde);
     margin: 15px 0;
+}
+
+/* --- ESTILOS ETAPA 5: MODAL DE PISTAS --- */
+
+.modal-clue {
+    /* Un poco más pequeño que el modal de acusación */
+    max-width: 550px; 
+    border-color: var(--color-borde); /* Borde neutral, no de alerta */
+    box-shadow: 0 0 20px rgba(255, 255, 255, 0.1);
+}
+
+.modal-clue h2 {
+    color: #ffffff; /* Título blanco, menos alarmante */
+}
+
+#clue-modal-body {
+    text-align: left;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    max-height: 300px;
+    overflow-y: auto; /* Añade scroll si el texto es muy largo */
+}
+
+#clue-modal-body p {
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--color-texto-principal);
+}
+/* --- ESTILOS DEL MOTOR DE ELIMINACIÓN --- */
+
+/* Esta clase se aplica a un item que SÍ es parte de la solución */
+/* Se queda "iluminado" pero no se tacha */
+.card.card-investigated {
+    border-color: var(--color-acento-principal);
+    box-shadow: 0 0 10px var(--color-acento-principal);
+    cursor: not-allowed;
+}
+
+.card.card-investigated:hover {
+    /* Cancela el hover normal */
+    transform: none;
+    background-color: var(--color-fondo-secundario);
+    color: var(--color-texto-principal);
+}
+/* --- ESTILOS PANTALLA DE BIENVENIDA --- */
+
+.modal-welcome {
+    /* Más grande, para que quepan las reglas */
+    max-width: 800px; 
+    border-color: var(--color-acento-principal);
+    box-shadow: 0 0 30px rgba(0, 170, 255, 0.4);
+}
+
+.modal-welcome h2 {
+    color: var(--color-acento-principal);
+}
+
+.modal-welcome p {
+    font-size: 1.1em;
+    color: var(--color-texto-secundario);
+    margin-bottom: 20px;
+}
+
+/* Estilos para la lista de reglas */
+.rules-list {
+    text-align: left;
+    background-color: var(--color-fondo);
+    border: 1px solid var(--color-borde);
+    padding: 20px;
+    margin: 20px 0;
+}
+
+.rules-list h3 {
+    color: #ffffff;
+    border-bottom: 1px solid var(--color-borde);
+    padding-bottom: 10px;
+    margin-bottom: 15px;
+}
+
+.rules-list ol {
+    padding-left: 20px; /* Espacio para los números */
+}
+
+.rules-list li {
+    margin-bottom: 15px;
+    line-height: 1.6;
+}
+
+.rules-list li ul {
+    list-style-type: disc; /* Viñetas redondas */
+    padding-left: 25px;
+    margin-top: 10px;
+}
+
+.rules-list li ul li {
+    margin-bottom: 5px;
+}
+
+/* Botón de Empezar */
+.modal-welcome .btn-final {
+    /* Reutilizamos la clase 'btn-final' pero le damos un color más "positivo" */
+    background-color: var(--color-acento-principal);
+    color: #000;
+}
+.modal-welcome .btn-final:hover {
+    background-color: #ffffff;
+    color: #000;
+    box-shadow: 0 0 15px var(--color-acento-principal);
 }
